@@ -1,5 +1,11 @@
 .container {
-  padding: 0 2rem;
+  display: inline-block;
+  padding-top: 10%;
+}
+
+.buttons{
+  display: flex;
+  justify-content: center;
 }
 
 .main {
