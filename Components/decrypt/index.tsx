@@ -1,17 +1,39 @@
 import styles from "./decrypt.module.scss";
 
-function Decrypt(){
+interface DecryptProps {
+    cryptedNumbers: number[];
+}
+
+function Decrypt({ cryptedNumbers }: DecryptProps) {
+    function handleDecrypt(cryptedNumbers: number[]) {
+        const allowedLetters = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', '.', ',', ' '];
+
+        let decryptedWord: string = '';
+
+        let i: number;
+        for (i of cryptedNumbers) {
+            let decryptedNumber = ((i - 5) / 3) - 1;
+            decryptedWord += allowedLetters[decryptedNumber];
+        }
+
+        let inputClear = document.getElementById('input-field');
+        if (inputClear?.value) {
+            inputClear.value = ''
+        }
+        
+        alert(`Valor decriptografado: ${decryptedWord}`);
+    }
+
     return (
-        <div className={styles.decrypt}>
-            <input
+        <input
             className={styles.input}
-            type="button" 
+            type="button"
             value="Descriptografar"
-            placeholder="Descriptografia" 
-            name="Descriptografia" 
-            required>
-            </input>
-            </div>
+            placeholder="Descriptografia"
+            name="Descriptografia"
+            onClick={() => handleDecrypt(cryptedNumbers)}
+        >
+        </input>
     );
 }
 

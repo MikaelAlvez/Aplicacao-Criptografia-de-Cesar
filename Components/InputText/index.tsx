@@ -5,12 +5,14 @@ function InputText() {
         <div className={styles.InputText}>
             <h2>Insira a mensagem na caixa abaixo e clique na opção desejada:</h2>
             <input className={styles.input}
-            type="text" 
-            placeholder="Escreva sua mensagem aqui" 
-            name="texto" 
-            required>
+                type="text"
+                placeholder="Escreva sua mensagem aqui"
+                name="texto"
+                required
+                id="input-field"
+                >
             </input>
-            </div>
+        </div>
     );
 }
 

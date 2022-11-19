@@ -1,15 +1,45 @@
 import styles from "./encrypt.module.scss";
 
-function Encrypt(){
+interface CryptProps {
+    setCryptedWord: (value: string) => void;
+    setCryptedNumbers: (value: number[]) => void;
+}
+
+function Encrypt({ setCryptedNumbers, setCryptedWord }: CryptProps) {
+    function handleCrypt() {
+        const allowedLetters = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', '.', ',', ' '];
+        const inputWord = document.getElementById('input-field')?.value;
+
+        let i = '';
+        let cryptedOutput: string = '';
+        let cryptedNumbers: number[] = [];
+        for (i of inputWord) {
+            if (allowedLetters.includes(i.toUpperCase())) {
+                const index = allowedLetters.indexOf(i.toUpperCase())
+                let cryptedLetter = 3 * (index + 1) + 5;
+                cryptedNumbers.push(cryptedLetter);
+                cryptedLetter > 29 ? cryptedLetter = cryptedLetter % 29 : cryptedLetter;
+                cryptedOutput += allowedLetters[cryptedLetter - 1];
+            }
+        }
+        setCryptedWord(cryptedOutput);
+        setCryptedNumbers(cryptedNumbers);
+
+        let inputClear = document.getElementById('input-field');
+        if (inputClear?.value) {
+            inputClear.value = ''
+        }
+        
+        alert(`Valor Criptografado: ${cryptedOutput}`);
+    }
     return (
-        <div className={styles.encrypt}>
-            <input className={styles.input}
-            type="button" value="Criptografar"
-            placeholder="Criptografia" 
-            name="Criptografia" 
-            required>
-            </input>
-            </div>
+        <button className={styles.input}
+            type="button"
+            id="crypto-input"
+            placeholder="Criptografia"
+            name="Criptografia"
+            onClick={handleCrypt}
+        >Criptografia</button>
     );
 }
 
