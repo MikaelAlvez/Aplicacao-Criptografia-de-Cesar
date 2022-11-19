@@ -17,10 +17,10 @@ function Decrypt({ cryptedNumbers }: DecryptProps) {
         }
 
         let inputClear = document.getElementById('input-field');
-        if (inputClear?.value) {
-            inputClear.value = ''
+        if ((inputClear as HTMLInputElement)?.value) {
+            (inputClear as HTMLInputElement).value = ''
         }
-        
+
         alert(`Valor decriptografado: ${decryptedWord}`);
     }
 

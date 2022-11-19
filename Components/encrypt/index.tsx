@@ -8,7 +8,7 @@ interface CryptProps {
 function Encrypt({ setCryptedNumbers, setCryptedWord }: CryptProps) {
     function handleCrypt() {
         const allowedLetters = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', '.', ',', ' '];
-        const inputWord = document.getElementById('input-field')?.value;
+        const inputWord = (document.getElementById('input-field') as HTMLInputElement)?.value;
 
         let i = '';
         let cryptedOutput: string = '';
@@ -26,8 +26,8 @@ function Encrypt({ setCryptedNumbers, setCryptedWord }: CryptProps) {
         setCryptedNumbers(cryptedNumbers);
 
         let inputClear = document.getElementById('input-field');
-        if (inputClear?.value) {
-            inputClear.value = ''
+        if ((inputClear as HTMLInputElement)?.value) {
+            (inputClear as HTMLInputElement).value = ''
         }
         
         alert(`Valor Criptografado: ${cryptedOutput}`);
