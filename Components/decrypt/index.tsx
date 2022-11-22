@@ -21,6 +21,8 @@ function Decrypt({ cryptedNumbers }: DecryptProps) {
             (inputClear as HTMLInputElement).value = ''
         }
 
+
+
         alert(`Valor decriptografado: ${decryptedWord}`);
     }
 
