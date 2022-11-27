@@ -39,7 +39,7 @@ function Encrypt({ setCryptedNumbers, setCryptedWord }: CryptProps) {
             placeholder="Criptografia"
             name="Criptografia"
             onClick={handleCrypt}
-        >Criptografia</button>
+        >Criptografar</button>
     );
 }
 
