@@ -1,11 +1,10 @@
 import styles from "./encrypt.module.scss";
 
 interface CryptProps {
-    setCryptedWord: (value: string) => void;
     setCryptedNumbers: (value: number[]) => void;
 }
 
-function Encrypt({ setCryptedNumbers, setCryptedWord }: CryptProps) {
+function Encrypt({ setCryptedNumbers }: CryptProps) {
     function handleCrypt() {
         const allowedLetters = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', '.', ',', ' '];
         const inputWord = (document.getElementById('input-field') as HTMLInputElement)?.value;
@@ -22,7 +21,7 @@ function Encrypt({ setCryptedNumbers, setCryptedWord }: CryptProps) {
                 cryptedOutput += allowedLetters[cryptedLetter - 1];
             }
         }
-        setCryptedWord(cryptedOutput);
+
         setCryptedNumbers(cryptedNumbers);
 
         let inputClear = document.getElementById('input-field');
@@ -30,7 +29,7 @@ function Encrypt({ setCryptedNumbers, setCryptedWord }: CryptProps) {
             (inputClear as HTMLInputElement).value = ''
         }
         
-        alert(`Valor Criptografado: ${cryptedOutput}`);
+        alert(`Valor Criptografado: ${cryptedOutput}\nValor dos numeros: [${cryptedNumbers}]`);
     }
     return (
         <button className={styles.input}
